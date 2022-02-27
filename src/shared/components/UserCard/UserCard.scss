@@ -1,0 +1,15 @@
+.card {
+    border-radius: 36px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    background-color: gray;
+    
+    &--user-card {
+        @extend .card;
+        
+        background-color: white;
+    }
+}
