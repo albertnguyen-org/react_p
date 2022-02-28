@@ -1,14 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropsType from 'prop-types';
+
 import "./Button.scss";
 
 function CusButton(props, { children }) {
-    const [disabled, setDisable] = useState(false);
-    const [isPrimary, setPrimary] = useState(props.isPrimary || false);
-    const [className, setClassName] = useState(
+    const [disabled] = useState(false);
+    const [isPrimary] = useState(props.isPrimary || false);
+    const [className] = useState(
         'btn ' + (isPrimary ? 'btn--primary' : 'btn--secondary')
     );
 
-    const [btnTitle, setTitle] = useState(props.title || 'btn_title');
+    const [btnTitle] = useState(props.title || 'btn_title');
 
     return (
         <>
@@ -24,6 +27,18 @@ function CusButton(props, { children }) {
             </button>
         </>
     );
+}
+
+CusButton.propsTypes = {
+    isPrimary: PropsType.bool,
+    title: PropsType.string,
+    onClick: PropsType.func
+}
+
+CusButton.defaultProps = {
+    isPrimary: false,
+    title: "btn_title",
+    onClick: () => { }
 }
 
 export default CusButton;
