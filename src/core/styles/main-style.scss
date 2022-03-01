@@ -1,3 +1,8 @@
+// Override HTML's urgent style
+body {
+    margin: 0px !important;
+}
+
 .row,
 .column {
     display: flex;
@@ -58,4 +63,36 @@
         justify-content: center;
         align-items: flex-end;
     }
+}
+
+.icon {
+    // Default size
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+
+    &--small {
+        @extend .icon;
+        height: 8px;
+        width: 8px;
+    }
+
+    &--large {
+        @extend .icon;
+        height: 24px;
+        width: 24px;
+    }
+}
+
+.btn {
+    cursor: pointer;
+    &--transparent {
+        background-color: transparent;
+        border: none;
+        border-radius: 0px;
+    }
+}
+
+.btn:hover {
+    cursor: pointer;
 }

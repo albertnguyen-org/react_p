@@ -4,13 +4,16 @@ import {
     Route,
     Routes as Switch
 } from 'react-router-dom';
-import { DashboardView, NotFound } from '../../shared/modules';
+
+import { DashboardView, NotFound, NaturalEnviroment, MainPage } from '../../shared/modules';
 
 export default function AppRouter() {
     return (
         <Router>
             <Switch>
-                <Route exact path='/dashboard' element={<DashboardView />} />
+                <Route exact path='/' element={<MainPage />} />
+                <Route path='/dashboard' element={<DashboardView />} />
+                <Route path='/ne' element={<NaturalEnviroment />} />
                 <Route path='*' element={<NotFound />} />
             </Switch>
         </Router>
