@@ -14,6 +14,9 @@ const MainPage = () => {
             <li>
                 <Link to="/ne">Natural Environment</Link>
             </li>
+            <li>
+                <Link to="/login">Login</Link>
+            </li>
         </div>
     );
 }
