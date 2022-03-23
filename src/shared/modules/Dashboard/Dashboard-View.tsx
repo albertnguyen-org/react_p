@@ -1,7 +1,7 @@
 import React from 'react';
-import AppLayout from '../../../core/layouts/app-layout';
-import { UserCard } from '../../components';
-import CardBank from '../../components/CardBank/CardBank';
+import AppLayout from 'core/layouts/app-layout';
+import { UserCard } from 'shared/components';
+import CardBank from 'shared/components/CardBank/CardBank';
 import "./Dashboard-View.scss";
 
 export default function DashboardView() {

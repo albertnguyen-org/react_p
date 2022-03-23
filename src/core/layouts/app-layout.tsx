@@ -1,12 +1,12 @@
 import React from 'react';
 
 // import primary style
-import "../styles/main-style.scss";
+import "core/styles/main-style.scss";
 
-const AppLayout = ({ children }) => {
+const AppLayout = (props: any) => {
     return (
         <div className="body">
-            {children}
+            {props.children}
         </div>
     );
 }

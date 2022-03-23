@@ -1,7 +1,7 @@
 import React from 'react';
 import { CusButton } from '..';
-import "../../../core/services";
-import { onImgError } from '../../../core/services/image-service';
+import "core/services";
+import { onImgError } from 'core/services/image-service';
 import "./CardBank.scss";
 const CardBank = () => {
 
