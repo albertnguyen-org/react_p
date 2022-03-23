@@ -6,18 +6,17 @@ import CusButton from '../Button/Button';
 import Row from '../Row';
 import './TextInput.scss';
 
-
 type Props = {
     title?: string,
     haseye?: boolean,
-    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+    name?: string,
 }
 
-type TextInput = Props & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+type TextInputType = Props & React.InputHTMLAttributes<HTMLInputElement>;
 
-const TextInput = (props: TextInput) => {
-    const [openEye, setEye] = useState(props.haseye);
-    const [innerType, setType] = useState(props.type || "text");
+const TextInput = ({ props }: { props: TextInputType }, ref: React.LegacyRef<HTMLInputElement>) => {
+    const [openEye, setEye] = useState(props?.haseye);
+    const [innerType, setType] = useState(props?.type || "text");
 
     const onClickEye = () => {
         setEye(!openEye);
@@ -26,14 +25,13 @@ const TextInput = (props: TextInput) => {
 
     return <>
         <label>
-            {props.title && props.title}
+            {props?.title && props?.title}
         </label>
         <div className='cus-input-wrapper'>
             <Row>
-                <input name={props.name} type={innerType} onChange={props.onChange} value={props.value} autoComplete={props.autoComplete}></input>
-                {props.haseye === true && <CusButton isTransparent={true} onClick={onClickEye}>
+                <input {...props} ref={ref} name={props?.name} type={innerType} onChange={props?.onChange} value={props?.value} autoComplete={props?.autoComplete}></input>
+                {props?.haseye === true && <CusButton onClick={onClickEye} isTransparent>
                     <>
-
                         {(openEye === true) && (<RiEyeCloseLine />)}
                         {(openEye === false) && (<AiOutlineEye />)}
                     </>
@@ -43,5 +41,7 @@ const TextInput = (props: TextInput) => {
     </>
 
 }
+// For using ref in reusable component
+const inputRef = React.forwardRef<HTMLInputElement, TextInputType>((props, ref) => TextInput({ props: props }, ref));
 
-export default TextInput;
+export default inputRef;
