@@ -1,0 +1,34 @@
+.card-bank {
+    &__content {
+        min-height: 100px;
+        min-width: 300px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img.bank-avatar {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: white;
+            object-fit: cover;
+        }
+
+        p.balance-name {
+            font-size: 12;
+            color: blue;
+            opacity: 0.9;
+        }
+
+        p.balance-amount {
+            font-size: 16px;
+            color: white;
+        }
+
+        p.balance-status {
+            font-size: 12px;
+            color: white;
+        }
+    }
+}

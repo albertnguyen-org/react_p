@@ -1,10 +1,9 @@
 import React from 'react';
-
-import { UserCardStyle } from '../styles';
+import './UserCard.scss'
 
 export default function UserCard() {
     return (
-        <div className="user-card-container">
+        <div className="card--user-card">
             <div>user card</div>
         </div>
     );
