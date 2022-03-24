@@ -1,5 +1,3 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { firebaseui } from 'firebaseui';
 
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
@@ -17,22 +15,6 @@ export const firebaseConfig = {
     appId: "1:796721500661:web:80365c3ce4fa5b604dd0bc",
     measurementId: "G-L1ED5CPBR6"
 };
-
-
-export default class Firebase {
-    auth = getAuth();
-
-    signInWithEmailAndPassword = async ({ email, password }) => {
-        createUserWithEmailAndPassword(
-            this.auth, email, password
-        ).then((res) => {
-            // Get `user` from credential
-            const userCer = res.user;
-        }).catch((error) => {
-            // TODO: Handle error here .... 
-        });
-    }
-}
 
 
 

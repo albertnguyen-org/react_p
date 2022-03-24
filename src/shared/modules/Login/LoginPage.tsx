@@ -1,7 +1,8 @@
+import FirebaseAPI from 'core/apis/firebase-apis';
 import AppLayout from 'core/layouts/app-layout';
 import { emailRegExp, passwordRegExp } from 'core/services/validation-service';
-import React, { useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useRef, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { AiOutlineQrcode } from 'react-icons/ai';
 import { CusButton, Row, TextInput } from 'shared/components';
 import styled from 'styled-components';
@@ -43,15 +44,21 @@ const Form = styled.form`
 
 type Props = {};
 
+type FormData = {
+    user_name: string,
+    password: string
+}
+
 const LoginPage = (props: Props): JSX.Element => {
 
     const userNameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const buttonSubmitRef = useRef<HTMLButtonElement>(null);
+    const [isLoading, setLoading] = useState(false);
 
-    const { register, handleSubmit, watch, formState: {
+    const { register, handleSubmit, control, formState: {
         errors
-    } } = useForm();
+    } } = useForm<FormData>();
 
     useEffect(() => {
         // Focus on input user_name
@@ -62,11 +69,6 @@ const LoginPage = (props: Props): JSX.Element => {
 
     const onKeyDownHandler = ({ name, event }: { name: string, event?: React.KeyboardEvent<HTMLInputElement> }) => {
         const isEnter = event?.key === "Enter";
-        console.log({
-            name, event, isEnter, refs: [
-                passwordRef, buttonSubmitRef, userNameRef
-            ]
-        });
 
         if (isEnter && name === "user_name") {
             passwordRef.current?.focus();
@@ -77,34 +79,20 @@ const LoginPage = (props: Props): JSX.Element => {
         }
     }
 
-    const submitForm = async (data: any) => {
-        // event.preventDefault();
-        // let encrpytedPwd = ProtectService.Encrypt({ data: formData.password });
-        // let uname = formData.user_name;
+    const submitForm = handleSubmit(async (data: FormData) => {
+        console.log(data);
+        const email = data["user_name"];
+        const password = data["password"];
 
-        // TODO: Do something to submit here ...
-        // console.log({ encrpytedPwd, uname });
+        const firebaseApis: FirebaseAPI = new FirebaseAPI();
 
-        // const frb: Firebase = new Firebase();
-        // await frb.signInWithEmailAndPassword({ email: uname, password: encrpytedPwd });
-    }
+        setLoading(true);
+        const res = await firebaseApis.signInWithEmailAndPassword({ email: email, password: password });
+        setLoading(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        let name = event.currentTarget.name;
-        let value = event.currentTarget.value;
-        let newData = { [name]: value }
-
-        // TODO: validate `user_name` here ...
-        // if (name === "user_name" && emailIsVaild(value) === false) {
-        //     setFormData({ ...formData, [name]: value, "error": USER_NAME_INVAILD });
-        // } else if (name === "password" && passwordIsVaild(value) === false) {
-        //     setFormData({ ...formData, [name]: value, "error": PWD_INVAILD });
-        // } else {
-
-        //     setFormData({ ...formData, [name]: value, "error": '' });
-        // }
-
-    }
+    }, (e) => {
+        console.error(e);
+    });
 
     const onClickQR = () => {
         // TODO: QR click handler ....
@@ -125,38 +113,40 @@ const LoginPage = (props: Props): JSX.Element => {
                 </QRCodeWrapper>
 
                 {/* Login form */}
-                <Form onSubmit={handleSubmit((data) => { console.log(data) })}>
-                    <TextInput
-                        title="user_name | Email" {
-                        ...register("user_name",
-                            {
-                                required: true, pattern: emailRegExp
-                            })
-                        }
-                        ref={userNameRef}
-                        onKeyDown={(event: any) => onKeyDownHandler({ "name": "user_name", "event": event })} ></TextInput>
+                <Form onSubmit={submitForm}>
+                    <Controller
+                        name='user_name'
+                        control={control}
+                        defaultValue=''
+                        rules={{ required: true, pattern: emailRegExp }}
+                        render={({ field }) => {
+                            return <TextInput
+                                title="User name (or Email)"
+                                {...field}
+                                ref={userNameRef}
+                                autoComplete="username"
+                                onKeyDown={(event: any) => onKeyDownHandler({ "name": field.name, "event": event })}></TextInput>
+                        }}
+                    />
 
-                    <TextInput
-                        title="Password"
-                        haseye
-                        onKeyDown={(event: any) => onKeyDownHandler({ name: "password", "event": event })}
-                        autoComplete="current-password"
-                        {...register("password", {
-                            required: true,
-                            pattern: passwordRegExp
-                        })}
-                        ref={passwordRef}
-                    ></TextInput>
-
-                    {/* {
-                        // Show error
-                        formData.error && (
-                            <Row><p>{formData.error}</p></Row>
-                        )
-                    } */}
+                    <Controller
+                        name='password'
+                        control={control}
+                        defaultValue=''
+                        rules={{ required: true, pattern: passwordRegExp }}
+                        render={({ field }) =>
+                            <TextInput
+                                {...field}
+                                title="Password"
+                                onKeyDown={(event: any) => onKeyDownHandler({ name: field.name, "event": event })}
+                                autoComplete="current-password"
+                                ref={passwordRef}
+                                haseye={true}
+                            ></TextInput>}
+                    />
 
                     <Row type="center" style={{ padding: "0px" }}>
-                        <CusButton title="Login" onClick={submitForm} primary={true} ref={buttonSubmitRef}></CusButton>
+                        <CusButton type="submit" title="Login" ref={buttonSubmitRef} primary={true} isLoading={isLoading}></CusButton>
                     </Row>
                 </Form>
             </FormWrapper>

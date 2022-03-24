@@ -15,12 +15,15 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Setup Firebase reCapcha verifier
-const auth = getAuth();
+const auth = getAuth(app);
+
 auth.languageCode = 'it';
 
 // Setup firebase UI
 // export const firebaseUISetup = new firebaseui.auth.AuthUI(firebase.auth());;
-
+export {
+    auth as firebaseAuth
+}
 export default function App() {
     return <AppRouter />
 }

@@ -1,5 +1,7 @@
-import UserCard from "./UserCard/UserCard";
 import CusButton from "./Button/Button";
-import TextInput from "./TextInput/TextInput";
+import Loading from './Loading';
 import Row from "./Row";
-export { UserCard, CusButton, TextInput, Row }
+import TextInput from "./TextInput/TextInput";
+import UserCard from "./UserCard/UserCard";
+
+export { UserCard, CusButton, TextInput, Row, Loading };

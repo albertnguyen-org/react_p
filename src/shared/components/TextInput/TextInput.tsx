@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import { RiEyeCloseLine } from 'react-icons/ri';
 import CusButton from '../Button/Button';
@@ -8,8 +8,7 @@ import './TextInput.scss';
 
 type Props = {
     title?: string,
-    haseye?: boolean,
-    name?: string,
+    haseye?: boolean
 }
 
 type TextInputType = Props & React.InputHTMLAttributes<HTMLInputElement>;
@@ -29,8 +28,8 @@ const TextInput = ({ props }: { props: TextInputType }, ref: React.LegacyRef<HTM
         </label>
         <div className='cus-input-wrapper'>
             <Row>
-                <input {...props} ref={ref} name={props?.name} type={innerType} onChange={props?.onChange} value={props?.value} autoComplete={props?.autoComplete}></input>
-                {props?.haseye === true && <CusButton onClick={onClickEye} isTransparent>
+                <input ref={ref} name={props?.name} type={innerType} onChange={props?.onChange} value={props?.value} autoComplete={props?.autoComplete}></input>
+                {props?.haseye === true && <CusButton onClick={onClickEye} isTransparent={true} style={{ "width": "fit-content" }}>
                     <>
                         {(openEye === true) && (<RiEyeCloseLine />)}
                         {(openEye === false) && (<AiOutlineEye />)}
