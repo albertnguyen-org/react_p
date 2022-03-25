@@ -10,6 +10,8 @@ class FirebaseAPI {
             const userCer = res.user;
 
             console.log(userCer);
+
+            return userCer;
         }).catch((error) => {
             // TODO: Handle error here .... 
             throw error;

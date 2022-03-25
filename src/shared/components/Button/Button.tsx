@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Loading from '../Loading';
 import './Button.scss';
+import styled from 'styled-components';
 
 interface ICusButton {
     title?: string,
@@ -38,7 +39,7 @@ const CusButton = ({ props }: { props: CusButtonType }, ref: React.LegacyRef<HTM
                     <p className='btn__title'>{btnTitle}</p>
                 )
             }
-        </button >
+        </button>
     );
 }
 const cusButtonRef = React.forwardRef<HTMLButtonElement, CusButtonType>((props, ref) => CusButton({ props: props }, ref));

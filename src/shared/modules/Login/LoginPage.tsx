@@ -55,6 +55,20 @@ const LoginPage = (props: Props): JSX.Element => {
     const passwordRef = useRef<HTMLInputElement>(null);
     const buttonSubmitRef = useRef<HTMLButtonElement>(null);
     const [isLoading, setLoading] = useState(false);
+    const [snackbar, setSnackBar] = useState({
+        open: false,
+        message: '',
+        severity: "info",
+        callBack: () => {
+
+            // Reset snackbar config to default
+            setSnackBar({
+                ...snackbar, open: false,
+                message: '',
+                severity: "info",
+            });
+        }
+    })
 
     const { register, handleSubmit, control, formState: {
         errors
@@ -88,10 +102,19 @@ const LoginPage = (props: Props): JSX.Element => {
 
         setLoading(true);
         const res = await firebaseApis.signInWithEmailAndPassword({ email: email, password: password });
+        // if(res.getIdToken.) { }
         setLoading(false);
 
     }, (e) => {
         console.error(e);
+        setLoading(false);
+
+        setSnackBar({
+            ...snackbar,
+            message: "Login failed",
+            open: true,
+            severity: "error"
+        });
     });
 
     const onClickQR = () => {
@@ -99,11 +122,7 @@ const LoginPage = (props: Props): JSX.Element => {
         console.log("Pressed onClickQR");
     }
 
-    // const onSubmit = (data: React.BaseSyntheticEvent<...>) => {
-    //     console.log(data);
-    // }
-
-    return <AppLayout>
+    return <AppLayout openSnackBar={snackbar.open} snackBarMessage={snackbar.message} snackBarCallBack={snackbar.callBack} severity={snackbar.severity}>
         <Container className='login-container'>
             <FormWrapper>
                 <QRCodeWrapper className='qr-wrapper'>
