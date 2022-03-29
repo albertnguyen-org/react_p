@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Loading from '../Loading';
 import './Button.scss';
 import styled from 'styled-components';
-
+import Button from '@mui/material/Button';
 interface ICusButton {
     title?: string,
     primary?: boolean,
@@ -26,7 +26,7 @@ const CusButton = ({ props }: { props: CusButtonType }, ref: React.LegacyRef<HTM
 
 
     return (
-        <button onClick={props?.onClick} disabled={disabled} className={className} type={props.type || "button"} ref={ref} style={props.style}>
+        <button onClick={props?.onClick} disabled={props.isLoading} className={className} type={props.type || "button"} ref={ref} style={props.style}>
             {
                 (props.isLoading) && (<Loading></Loading>)
             }

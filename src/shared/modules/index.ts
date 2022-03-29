@@ -1,7 +1,8 @@
-import DashboardView from "./Dashboard/Dashboard-View";
-import NotFound from "./NotFound/NotFound";
-import NaturalEnviroment from "./NaturalEnvironment/NaturalEnvironment";
+import { DashboardView } from "./Dashboard";
 import MainPage from "./Main/Main";
-import Row from "shared/components/Row";
+import NaturalEnviroment from "./NaturalEnvironment";
+import NotFound from "./NotFound/NotFound";
+import UserProfile from "./UserProfile";
+import AnotherMethodLoginRef from "./AnotherMethodLogin";
 
-export { DashboardView, NotFound, NaturalEnviroment, MainPage, Row }
+export { DashboardView, NotFound, NaturalEnviroment, MainPage, UserProfile, AnotherMethodLoginRef as AnotherMethodLogin };

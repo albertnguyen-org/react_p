@@ -8,6 +8,8 @@ import { CusSnackBar } from 'shared/components';
 type AppLayoutType = {
     openSnackBar?: boolean,
     snackBarMessage?: string,
+    openModal?: boolean,
+    modalChildren?: React.ReactElement,
     snackBarCallBack?: (event: React.SyntheticEvent) => void;
 
 }

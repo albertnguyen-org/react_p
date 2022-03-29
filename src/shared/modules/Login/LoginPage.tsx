@@ -8,6 +8,8 @@ import { CusButton, Row, TextInput } from 'shared/components';
 import styled from 'styled-components';
 import './LoginPage.scss';
 
+import { AnotherMethodLogin } from '../index';
+
 const FormWrapper = styled.div`
     border-radius: 36px;
     padding: 20px;
@@ -68,11 +70,14 @@ const LoginPage = (props: Props): JSX.Element => {
                 severity: "info",
             });
         }
-    })
+    });
 
     const { register, handleSubmit, control, formState: {
         errors
     } } = useForm<FormData>();
+
+    const [isOpenAnother, setOpenAnother] = useState(false);
+    const anotherLoginMethodRef = useRef(null);
 
     useEffect(() => {
         // Focus on input user_name
@@ -102,7 +107,15 @@ const LoginPage = (props: Props): JSX.Element => {
 
         setLoading(true);
         const res = await firebaseApis.signInWithEmailAndPassword({ email: email, password: password });
-        // if(res.getIdToken.) { }
+        // let token = res.getIdToken();
+        if (res.getIdToken()) {
+            setSnackBar({
+                ...snackbar,
+                message: "Login success",
+                open: true,
+                severity: "success"
+            });
+        }
         setLoading(false);
 
     }, (e) => {
@@ -122,55 +135,66 @@ const LoginPage = (props: Props): JSX.Element => {
         console.log("Pressed onClickQR");
     }
 
-    return <AppLayout openSnackBar={snackbar.open} snackBarMessage={snackbar.message} snackBarCallBack={snackbar.callBack} severity={snackbar.severity}>
-        <Container className='login-container'>
-            <FormWrapper>
-                <QRCodeWrapper className='qr-wrapper'>
-                    <CusButton onClick={onClickQR} isTransparent={true}>
-                        <AiOutlineQrcode size={60} />
-                    </CusButton>
-                </QRCodeWrapper>
+    const onClickOthers = () => setOpenAnother(true);
 
-                {/* Login form */}
-                <Form onSubmit={submitForm}>
-                    <Controller
-                        name='user_name'
-                        control={control}
-                        defaultValue=''
-                        rules={{ required: true, pattern: emailRegExp }}
-                        render={({ field }) => {
-                            return <TextInput
-                                title="User name (or Email)"
-                                {...field}
-                                ref={userNameRef}
-                                autoComplete="username"
-                                onKeyDown={(event: any) => onKeyDownHandler({ "name": field.name, "event": event })}></TextInput>
-                        }}
-                    />
+    const onHandleCloseDialog = () => setOpenAnother(false);
 
-                    <Controller
-                        name='password'
-                        control={control}
-                        defaultValue=''
-                        rules={{ required: true, pattern: passwordRegExp }}
-                        render={({ field }) =>
-                            <TextInput
-                                {...field}
-                                title="Password"
-                                onKeyDown={(event: any) => onKeyDownHandler({ name: field.name, "event": event })}
-                                autoComplete="current-password"
-                                ref={passwordRef}
-                                haseye={true}
-                            ></TextInput>}
-                    />
+    return <>
+        <AppLayout openSnackBar={snackbar.open} snackBarMessage={snackbar.message} snackBarCallBack={snackbar.callBack} severity={snackbar.severity}>
+            <Container className='login-container'>
+                <FormWrapper>
+                    <QRCodeWrapper className='qr-wrapper'>
+                        <CusButton onClick={onClickQR} isTransparent={true}>
+                            <AiOutlineQrcode size={60} />
+                        </CusButton>
+                    </QRCodeWrapper>
 
+                    {/* Login form */}
+                    <Form onSubmit={submitForm}>
+                        <Controller
+                            name='user_name'
+                            control={control}
+                            defaultValue=''
+                            rules={{ required: true, pattern: emailRegExp }}
+                            render={({ field }) => {
+                                return <TextInput
+                                    title="User name (or Email)"
+                                    {...field}
+                                    ref={userNameRef}
+                                    autoComplete="username"
+                                    onKeyDown={(event: any) => onKeyDownHandler({ "name": field.name, "event": event })}></TextInput>
+                            }}
+                        />
+
+                        <Controller
+                            name='password'
+                            control={control}
+                            defaultValue=''
+                            rules={{ required: true, pattern: passwordRegExp }}
+                            render={({ field }) =>
+                                <TextInput
+                                    {...field}
+                                    title="Password"
+                                    onKeyDown={(event: any) => onKeyDownHandler({ name: field.name, "event": event })}
+                                    autoComplete="current-password"
+                                    ref={passwordRef}
+                                    haseye={true}
+                                ></TextInput>}
+                        />
+
+                        <Row type="center" style={{ padding: "0px" }}>
+                            <CusButton type="submit" title="Login" ref={buttonSubmitRef} primary={true} isLoading={isLoading}></CusButton>
+                        </Row>
+                    </Form>
                     <Row type="center" style={{ padding: "0px" }}>
-                        <CusButton type="submit" title="Login" ref={buttonSubmitRef} primary={true} isLoading={isLoading}></CusButton>
+                        <CusButton title="Other methods" primary={false} onClick={onClickOthers}></CusButton>
                     </Row>
-                </Form>
-            </FormWrapper>
-        </Container>
-    </AppLayout >
+                </FormWrapper>
+            </Container>
+        </AppLayout >
+
+        <AnotherMethodLogin open={isOpenAnother} ref={anotherLoginMethodRef} handleClose={onHandleCloseDialog}></AnotherMethodLogin>
+    </>
 }
 
 

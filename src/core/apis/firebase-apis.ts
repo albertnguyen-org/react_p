@@ -1,5 +1,5 @@
 import { firebaseAuth } from 'App';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 
 class FirebaseAPI {
     signInWithEmailAndPassword = async ({ email, password }: { email: string, password: string }) => {
@@ -12,6 +12,9 @@ class FirebaseAPI {
             console.log(userCer);
 
             return userCer;
+        }, (rejected) => {
+            console.table(rejected);
+            return rejected;
         }).catch((error) => {
             // TODO: Handle error here .... 
             throw error;

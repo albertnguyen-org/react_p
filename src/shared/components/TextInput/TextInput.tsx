@@ -41,6 +41,6 @@ const TextInput = ({ props }: { props: TextInputType }, ref: React.LegacyRef<HTM
 
 }
 // For using ref in reusable component
-const inputRef = React.forwardRef<HTMLInputElement, TextInputType>((props, ref) => TextInput({ props: props }, ref));
+const InputRef = React.forwardRef<HTMLInputElement, TextInputType>((props, ref) => TextInput({ props: props }, ref));
 
-export default inputRef;
+export default InputRef;
