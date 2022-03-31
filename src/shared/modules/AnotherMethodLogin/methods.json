@@ -2,7 +2,9 @@
     {
         "id": "metamask",
         "name": "Meta Mask Wallet",
-        "type": "crypto-wallet"
+        "type": "crypto-wallet",
+        "icon": "",
+        "hot": true
     },
     {
         "id": "fb",
