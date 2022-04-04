@@ -43,8 +43,8 @@
     "test": "jest",
     "tsc": "tsc",
     "eject": "NODE_PATH=src/ react-scripts eject",
-    "cypress:open" : "npx cypress open",
-    "cypress:run" : "npx cypress run"
+    "cy:open" : "npx cypress open",
+    "cy:run" : "npx cypress run"
   },
   "author": "Albert-Nguyen",
   "license": "MIT",
