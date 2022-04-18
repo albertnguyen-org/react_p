@@ -1,0 +1,24 @@
+[
+    {
+        "id": "metamask",
+        "name": "Meta Mask Wallet",
+        "type": "crypto-wallet",
+        "icon": "",
+        "hot": true
+    },
+    {
+        "id": "fb",
+        "name": "Facebook",
+        "type": "social-media"
+    },
+    {
+        "id": "gg",
+        "name": "Google",
+        "type": "social-media"
+    },
+    {
+        "id": "phone",
+        "name": "Phone",
+        "type": "phone"
+    }
+]

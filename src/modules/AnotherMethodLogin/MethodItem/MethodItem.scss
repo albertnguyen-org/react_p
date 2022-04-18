@@ -1,0 +1,63 @@
+@import url("/src/core/styles/_variables.scss");
+
+.method-item-container {
+    margin: 0px 30px;
+    position: relative;
+
+    .content-wrapper {
+        cursor: pointer;
+        padding: 20px;
+        border-radius: 3px;
+        justify-content: center;
+        align-items: center;
+        min-width: 200px;
+        min-height: 400px;
+        background-color: white;
+        border: none;
+        width: fit-content;
+        border: 1px solid transparent;
+        background-color: white;
+        z-index: 1;
+    }
+
+    &--hot {
+        @extend .method-item-container;
+        .hot-wrapper {
+            z-index: 0;
+            text-align: center;
+            color: white;
+            display: block;
+            padding: 10px;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            position: absolute;
+            top: -5px;
+            left: 0px;
+            font-size: 14px;
+            height: 30px;
+            background-color: red;
+            font-weight: bold;
+        }
+    }
+}
+
+.content-wrapper:hover {
+    border: 1px solid gray;
+    font-weight: bold;
+}
+
+.method-item-container--hot:hover {
+    .hot-wrapper {
+        top: -30px;
+        animation: showHotLabel 0.5s;
+    }
+}
+
+@keyframes showHotLabel {
+    from {
+        top: -5px;
+    }
+    to {
+        top: -30px;
+    }
+}
