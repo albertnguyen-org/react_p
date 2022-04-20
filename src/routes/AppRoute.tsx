@@ -4,8 +4,8 @@ import {
     Route,
     Routes as Switch
 } from 'react-router-dom';
-import { DashboardView, MainPage, NaturalEnviroment, NotFound, UserProfile } from 'shared/modules';
-import LoginPage from 'shared/modules/Login';
+import { DashboardView, MainPage, NaturalEnviroment, NotFound, UserProfile } from 'modules';
+import LoginPage from 'modules/Login';
 
 
 export default function AppRouter(_props: any) {

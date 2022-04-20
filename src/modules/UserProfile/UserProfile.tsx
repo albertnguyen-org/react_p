@@ -1,4 +1,4 @@
-import AppLayout from 'core/layouts/app-layout';
+import AppLayout from 'layouts/app-layout';
 import React from 'react';
 import './UserProfile.scss';
 
