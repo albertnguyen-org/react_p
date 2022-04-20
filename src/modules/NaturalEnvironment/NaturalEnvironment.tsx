@@ -3,7 +3,7 @@ import "./NaturalEnvironment.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faMagnifyingGlass, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-const NaturalEnviroment = () => {
+const NaturalEnvironment = () => {
     return <div className='ne-container' style={{ 'backgroundImage': 'url("https://cdn.trendhunterstatic.com/thumbs/invisible-studio.jpeg")', 'objectFit': 'contain' }}>
         {/* Header */}
         <header className='ne-container__header'>
