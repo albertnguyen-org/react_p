@@ -85,4 +85,4 @@ const NaturalEnvironment = () => {
 }
 
 
-export default NaturalEnviroment;
+export default NaturalEnvironment;

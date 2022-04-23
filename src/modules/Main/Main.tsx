@@ -35,6 +35,11 @@ const Paths: MainPageType[] = [
         label: "Portfolio",
         isExternalLink: true
     },
+    {
+        path: "/landing-page",
+        label: "Landing Page",
+        isExternalLink: false
+    },
 
 ]
 const MainPage = () => {

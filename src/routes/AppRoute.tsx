@@ -1,11 +1,10 @@
+import { DashboardView, LandingPage, LoginPage, MainPage, NaturalEnvironment, NotFound, UserProfile } from 'modules';
 import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
     Routes as Switch
 } from 'react-router-dom';
-import { DashboardView, MainPage, NaturalEnvironment, NotFound, UserProfile } from 'modules';
-import LoginPage from 'modules/Login';
 
 export default function AppRouter(_props: any) {
     return (
@@ -16,6 +15,7 @@ export default function AppRouter(_props: any) {
                 <Route path='/ne' element={<NaturalEnvironment />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/profile' element={<UserProfile />} />
+                <Route path='/landing-page' element={<LandingPage />} />
                 <Route path='*' element={<NotFound />} />
             </Switch>
         </Router>
