@@ -43,8 +43,8 @@
     "test": "jest",
     "tsc": "tsc",
     "eject": "NODE_PATH=src/ react-scripts eject",
-    "cy:open" : "npx cypress open",
-    "cy:run" : "npx cypress run"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
   },
   "author": "Albert-Nguyen",
   "license": "MIT",
@@ -62,6 +62,10 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.24",
-    "cypress": "^9.5.3"
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "cypress": "^9.5.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.29.4"
   }
 }
