@@ -1,11 +1,11 @@
-import { AppBar, DialogProps, IconButton, List, Slide, Toolbar, Typography, Card } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import { TransitionProps } from '@mui/material/transitions';
-import React, { useState } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
-import loginMethods from './methods.json';
-import MethodItem from './MethodItem/MethodItem';
-import styled from 'styled-components';
+import { AppBar, Card, DialogProps, IconButton, List, Slide, Toolbar, Typography } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import { TransitionProps } from "@mui/material/transitions";
+import React, { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import loginMethods from "./methods.json";
+import MethodItem from "./MethodItem/MethodItem";
+import styled from "styled-components";
 
 type AnotherMethodLoginType = {
 
@@ -14,12 +14,12 @@ type AnotherMethodLoginType = {
 } & DialogProps;
 
 const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
+	props: TransitionProps & {
         children: React.ReactElement;
     },
-    ref: React.Ref<unknown>,
+	ref: React.Ref<unknown>,
 ) {
-    return <Slide direction="up" ref={ref} {...props} />;
+	return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export interface MethodType {
@@ -39,49 +39,49 @@ const ListStyled = styled(List)`
     justify-content: center;
     display:flex;
     flex-direction: row;
-`
+`;
 
 const AnotherMethodLogin = (props: AnotherMethodLoginType, ref: React.Ref<HTMLDivElement>) => {
 
-    const [methods] = useState(() => {
-        let result: MethodType[] = []
-        loginMethods.map((m) => {
-            let item: MethodType = {
-                ...m
-            };
+	const [methods] = useState(() => {
+		const result: MethodType[] = [];
+		loginMethods.map((m) => {
+			const item: MethodType = {
+				...m
+			};
 
-            result.push(item);
-        });
+			result.push(item);
+		});
 
-        return result;
-    });
-    const onClose = () => { }
-    return <Dialog fullScreen open={props?.open || false} onClose={onClose} TransitionComponent={Transition} ref={ref}>
-        <AppBar sx={{ position: 'relative' }}>
-            <Toolbar>
-                <Typography sx={{ ml: 2, flex: 1 }} component="div">
-                    {/* NOTE: Let's it empty */}
-                </Typography>
+		return result;
+	});
+	const onClose = () => { };
+	return <Dialog fullScreen open={props?.open || false} onClose={onClose} TransitionComponent={Transition} ref={ref}>
+		<AppBar sx={{ position: "relative" }}>
+			<Toolbar>
+				<Typography sx={{ ml: 2, flex: 1 }} component="div">
+					{/* NOTE: Let's it empty */}
+				</Typography>
 
-                <IconButton edge="start"
-                    color="inherit"
-                    onClick={props.handleClose}
-                    arial-label="close"
-                >
-                    <CloseIcon></CloseIcon>
-                </IconButton>
-            </Toolbar>
-        </AppBar>
-        {props?.children}
+				<IconButton edge="start"
+					color="inherit"
+					onClick={props.handleClose}
+					arial-label="close"
+				>
+					<CloseIcon></CloseIcon>
+				</IconButton>
+			</Toolbar>
+		</AppBar>
+		{props?.children}
 
-        <ListStyled sx={{ pt: 0 }}>
-            {
-                methods.map((method) => {
-                    return <MethodItem key={method.id} data={method}></MethodItem>
-                })}
-        </ListStyled>
-    </Dialog>;
-}
+		<ListStyled sx={{ pt: 0 }}>
+			{
+				methods.map((method) => {
+					return <MethodItem key={method.id} data={method}></MethodItem>;
+				})}
+		</ListStyled>
+	</Dialog>;
+};
 
 const AnotherMethodLoginRef = React.forwardRef(AnotherMethodLogin);
 

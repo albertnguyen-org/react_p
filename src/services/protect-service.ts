@@ -2,17 +2,17 @@
 
 const Hash = ({ value, type = "sha" }: { value: string, type?: string }): string => {
 
-    switch (type) {
-        case "md5":
-            // TODO: Do something to hash with MD5
-            return "";
-        case "sha":
-            // TODO: Do something to has with SHA
-            return "";
-        default: return value;
-    }
-    // return result;
-}
+	switch (type) {
+	case "md5":
+		// TODO: Do something to hash with MD5
+		return "";
+	case "sha":
+		// TODO: Do something to has with SHA
+		return "";
+	default: return value;
+	}
+	// return result;
+};
 
 
 /**
@@ -22,12 +22,12 @@ const Hash = ({ value, type = "sha" }: { value: string, type?: string }): string
  * @returns 
  */
 const Encrypt = ({ data, type = "text" }: { data: string, type?: string }): string => {
-    switch (type) {
-        case "password": return data
-        default: return data;
-    }
+	switch (type) {
+	case "password": return data;
+	default: return data;
+	}
 
-}
+};
 
 
 export { Hash, Encrypt };

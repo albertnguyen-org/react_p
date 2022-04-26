@@ -1,12 +1,12 @@
 const breakpoints = {
-    desktop: {
-        value: 1024,
-        unit: 'px'
-    }
-}
+	desktop: {
+		value: 1024,
+		unit: "px"
+	}
+};
 
 const keys = Object.keys(breakpoints);
 
 
-export { keys }
+export { keys };
 export default breakpoints;

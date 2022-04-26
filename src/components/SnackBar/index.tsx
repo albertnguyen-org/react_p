@@ -1,2 +1,2 @@
-import CusSnackBar from './SnackBar';
+import CusSnackBar from "./SnackBar";
 export default CusSnackBar;

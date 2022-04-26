@@ -1,14 +1,3 @@
-# Purpose
-React-JS practise and sharing
-# Project Structure
+# Semantic
 
-```
-
-
-```
-
-# Coding convention
-
-
-# For contributor
-
+Always use `Container` layout to wrap outside of `page`, `component`

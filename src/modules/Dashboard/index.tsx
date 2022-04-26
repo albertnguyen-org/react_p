@@ -1,3 +1,3 @@
 import DashboardView from "./Dashboard-View";
 
-export { DashboardView }
+export { DashboardView };

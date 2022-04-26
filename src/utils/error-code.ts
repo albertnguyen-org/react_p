@@ -1,2 +1,2 @@
-export const USER_NAME_INVAILD: string = "USER_NAME_INVAILD";
-export const PWD_INVAILD: string = "PWD_INVAILD";
+export const USER_NAME_INVAILD = "USER_NAME_INVAILD";
+export const PWD_INVAILD = "PWD_INVAILD";

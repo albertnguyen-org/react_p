@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default function CoinList(props: any) {
-    return (
-        <div className='coin-list-container'>
+	return (
+		<div className='coin-list-container'>
 
-        </div>
-    );
+		</div>
+	);
 }
