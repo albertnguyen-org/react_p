@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import FirebaseAPI from "apis/firebase-apis";
 import AppLayout from "layouts/app-layout";
 import { emailRegExp, passwordRegExp } from "services/validation-service";
@@ -9,6 +10,19 @@ import styled from "styled-components";
 import "./LoginPage.scss";
 
 import { AnotherMethodLogin } from "../index";
+=======
+import FirebaseAPI from 'apis/firebase-apis';
+import AppLayout from 'layouts/app-layout';
+import { emailRegExp, passwordRegExp } from 'services/validation-service';
+import React, { useEffect, useRef, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { AiOutlineQrcode } from 'react-icons/ai';
+import { CusButton, Row, TextInput } from 'components';
+import styled from 'styled-components';
+import './LoginPage.scss';
+
+import { AnotherMethodLogin } from '../index';
+>>>>>>> 8d022efe1046e7f9a7f5bb028c163f4f17ac3fa6
 
 const FormWrapper = styled.div`
     border-radius: 36px;
