@@ -7,12 +7,12 @@ import NotFound from "./NotFound/NotFound";
 import UserProfile from "./UserProfile";
 import LandingPage from "./LandingPage";
 export {
-    DashboardView,
-    NotFound,
-    NaturalEnvironment,
-    MainPage,
-    UserProfile,
-    AnotherMethodLoginRef as AnotherMethodLogin,
-    LoginPage,
-    LandingPage,
+	DashboardView,
+	NotFound,
+	NaturalEnvironment,
+	MainPage,
+	UserProfile,
+	AnotherMethodLoginRef as AnotherMethodLogin,
+	LoginPage,
+	LandingPage,
 };

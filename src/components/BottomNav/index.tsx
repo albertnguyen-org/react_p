@@ -1,3 +1,3 @@
-import CusBottomNav from './BottomNav';
+import CusBottomNav from "./BottomNav";
 
 export default CusBottomNav;
