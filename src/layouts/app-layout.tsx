@@ -1,8 +1,8 @@
 import React from 'react';
 
 // import primary style
-import "core/styles/main-style.scss";
-import { CusSnackBar } from 'shared/components';
+import "styles/main-style.scss";
+import { CusSnackBar } from 'components';
 
 
 type AppLayoutType = {

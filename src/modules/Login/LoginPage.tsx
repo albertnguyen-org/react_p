@@ -1,10 +1,10 @@
-import FirebaseAPI from 'core/apis/firebase-apis';
-import AppLayout from 'core/layouts/app-layout';
-import { emailRegExp, passwordRegExp } from 'core/services/validation-service';
+import FirebaseAPI from 'apis/firebase-apis';
+import AppLayout from 'layouts/app-layout';
+import { emailRegExp, passwordRegExp } from 'services/validation-service';
 import React, { useEffect, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { AiOutlineQrcode } from 'react-icons/ai';
-import { CusButton, Row, TextInput } from 'shared/components';
+import { CusButton, Row, TextInput } from 'components';
 import styled from 'styled-components';
 import './LoginPage.scss';
 

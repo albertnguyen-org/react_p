@@ -6,8 +6,8 @@ import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import React from 'react';
-import { firebaseConfig } from './core/configs/firebase';
-import AppRouter from "./core/routes/AppRoute";
+import { firebaseConfig } from './configs/firebase';
+import AppRouter from "./routes/AppRoute";
 
 // import { firebase } from 'firebase/firebase-auth';
 // Initialize Firebase

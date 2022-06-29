@@ -1,6 +1,6 @@
 import React from 'react';
 import "./NaturalEnvironment.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMagnifyingGlass, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const NaturalEnviroment = () => {
@@ -21,12 +21,12 @@ const NaturalEnviroment = () => {
 
             {/* User button with icon */}
             <button onClick={() => { console.log("Clicked user icon") }} className='btn--transparent'>
-                <FontAwesomeIcon icon={faUser} className='icon' />
+                {/* <FontAwesomeIcon icon={faUser} className='icon' /> */}
             </button>
 
             {/* Search button with icon */}
             <button onClick={() => { console.log("Clicked user icon") }} className='btn--transparent'>
-                <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' />
+                {/* <FontAwesomeIcon icon={faMagnifyingGlass} className='icon' /> */}
             </button>
 
         </header>
@@ -74,10 +74,10 @@ const NaturalEnviroment = () => {
             <div className='btns-wrapper'>
                 <button id="previous" className='btn--primary' onClick={() => console.log('Click on previous button')}>
 
-                    <FontAwesomeIcon icon={faAngleLeft} />
+                    {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
                 </button>
                 <button id="next" className='btn--primary' onClick={() => console.log('Click on next button')}>
-                    <FontAwesomeIcon icon={faAngleRight} className='icon' />
+                    {/* <FontAwesomeIcon icon={faAngleRight} className='icon' /> */}
                 </button>
             </div>
         </footer>
